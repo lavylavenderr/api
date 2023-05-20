@@ -14,7 +14,7 @@ app.register(spotify, { prefix: "/spotify" });
 
 (async () => {
   try {
-    await app.listen({ port });
+    await app.listen({ host: '0.0.0.0', port });
 
     console.log(`Server is now listening on ${port}`);
   } catch (error) {
