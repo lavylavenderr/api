@@ -4,7 +4,7 @@ import SpotifyWebApi from 'spotify-web-api-node';
 const spotifyApi = new SpotifyWebApi({
   clientId: 'a0f873411e774fe5af38a22b7c4b52cb',
   clientSecret: '69fa64bce12749f99575759668715741',
-  redirectUri: 'https://api.itsalexander.dev/spotify/callback'
+  redirectUri: 'https://api.lavy.ws/spotify/callback'
 });
 
 interface CallbackQuery {
