@@ -1,25 +1,31 @@
 {
-  "name": "expressjs",
+  "name": "denapi",
   "version": "1.0.0",
+  "author": "Alexander Hyman",
   "main": "index.js",
   "scripts": {
     "dev": "nodemon src/index.ts",
     "build": "tsc",
-    "start": "node dist/index.js"
+    "start": "node dist/index.js",
+    "studio": "prisma studio",
+    "prisma:migrate": "prisma migrate dev"
   },
   "dependencies": {
     "@fastify/type-provider-json-schema-to-ts": "^2.2.2",
-    "chalk": "^4",
+    "@flybywiresim/api-client": "^0.16.2",
+    "@prisma/client": "5.2.0",
+    "chalk": "^4.1.2",
     "discord-webhook-node": "^1.1.8",
-    "dotenv": "^16.0.3",
-    "fastify": "^4.17.0",
+    "dotenv": "^16.3.1",
+    "fastify": "^4.22.2",
     "moment-timezone": "^0.5.43",
+    "prisma": "^5.2.0",
     "spotify-web-api-node": "^5.0.2"
   },
   "devDependencies": {
-    "@types/node": "^18.16.3",
+    "@types/node": "^18.17.15",
     "nodemon": "^2.0.22",
     "ts-node": "^10.9.1",
-    "typescript": "^5.0.4"
+    "typescript": "^5.2.2"
   }
 }
