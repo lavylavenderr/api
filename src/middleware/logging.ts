@@ -4,7 +4,7 @@ import { prisma } from '../util/db';
 const logRequest = async (request, reply) => {
   await prisma.request.create({
     data: {
-      requestip: request.ip as string,
+      requestip: request.headers["x-forwarded-for"] as string ?? "127.0.0.1", // For Railway, since it uses the "X-Forwarded-For" header
       endpoint: request.url as string,
       useragent:
         (request.headers['user-agent'] as string) ??
