@@ -14,13 +14,10 @@
     "@fastify/type-provider-json-schema-to-ts": "^2.2.2",
     "@flybywiresim/api-client": "^0.16.2",
     "@prisma/client": "5.2.0",
-    "chalk": "^4.1.2",
-    "discord-webhook-node": "^1.1.8",
+    "axios": "^1.5.0",
     "dotenv": "^16.3.1",
     "fastify": "^4.22.2",
-    "moment-timezone": "^0.5.43",
-    "prisma": "^5.2.0",
-    "spotify-web-api-node": "^5.0.2"
+    "prisma": "^5.2.0"
   },
   "devDependencies": {
     "@types/node": "^18.17.15",

@@ -22,7 +22,7 @@ app.register(weather, { prefix: '/weather' });
 
 // Logging Function
 app.addHook('onRequest', async (request, reply) => {
-  await logRequest(request, reply);
+  await logRequest(request);
 });
 
 // Start Fastify
