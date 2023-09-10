@@ -4,7 +4,6 @@ import { config } from 'dotenv';
 import logRequest from './middleware/logging';
 
 import { weather } from './routes/weather';
-import { utilities } from './routes/utilities';
 
 config();
 
@@ -20,7 +19,6 @@ app.get('/', (request, reply) => {
 });
 
 app.register(weather, { prefix: '/weather' });
-app.register(utilities, { prefix: '/util' });
 
 // Logging Function
 app.addHook('onRequest', async (request, reply) => {
