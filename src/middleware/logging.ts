@@ -5,11 +5,8 @@ import { type FastifyRequest } from 'fastify';
 const logRequest = async (request: FastifyRequest) => {
   await prisma.request.create({
     data: {
-      requestip: (request.headers['x-forwarded-for'] as string) ?? '127.0.0.1', // For Railway, since it uses the "X-Forwarded-For" header
-      endpoint: request.url as string,
-      useragent:
-        (request.headers['user-agent'] as string) ??
-        'Toaster/1.0 (Unknown Device)'
+      ip: (request.headers['cf-connecting-ip'] as string) ?? '127.0.0.1', // For Railway, since it uses the "X-Forwarded-For" header
+      route: request.url as string
     }
   });
 };

@@ -4,6 +4,7 @@ import { config } from 'dotenv';
 import logRequest from './middleware/logging';
 
 import { weather } from './routes/weather';
+import { badge } from './routes/badge';
 
 config();
 
@@ -19,6 +20,7 @@ app.get('/', (request, reply) => {
 });
 
 app.register(weather, { prefix: '/weather' });
+app.register(badge, { prefix: '/badge' });
 
 // Logging Function
 app.addHook('onRequest', async (request, reply) => {

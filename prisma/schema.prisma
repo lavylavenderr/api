@@ -8,11 +8,7 @@ datasource db {
 }
 
 model Request {
-  id        Int      @id @default(autoincrement()) @unique 
-
-  requestip String
-  endpoint  String
-  useragent String
-
-  time      DateTime @default(now())
+  id    Int    @id @default(autoincrement())
+  route String
+  ip    String
 }
