@@ -69,12 +69,11 @@ export const badge: FastifyPluginAsyncJsonSchemaToTs = async function (
     const lanyard = (
       await axios.get('https://api.lanyard.rest/v1/users/988801425196867644')
     ).data;
-    const activityArray = lanyard.data.activites as [];
+    const activityArray = lanyard.data.activities as [];
     const filteredActivity = activityArray.find((activity: any) => {
-      activity.type == 0 && activity.id !== '782685898163617802';
+      return activity.type == 0 && activity.application_id !== '782685898163617802';
     }) as any;
     let activityName: string;
-
     if (filteredActivity) activityName = filteredActivity.name;
     else activityName = 'nothing :3';
 
