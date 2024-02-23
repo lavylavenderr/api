@@ -1,5 +1,6 @@
 import { FastifyPluginAsyncJsonSchemaToTs } from '@fastify/type-provider-json-schema-to-ts';
-import { Metar, Taf } from '@flybywiresim/api-client';
+import { sendReply } from '../util/sendReply';
+import axios from 'axios';
 
 interface WeatherQuery {
   icao: string;
@@ -11,19 +12,24 @@ export const weather: FastifyPluginAsyncJsonSchemaToTs = async function (
   _options
 ) {
   app.get<{ Querystring: WeatherQuery }>('/metar', async (request, reply) => {
-    const icao = request.query.icao;
-    const metar = await Metar.get(icao);
-
-    return reply
-      .code(200)
-      .header('Content-Type', 'application/json')
-      .send(metar);
+    const response = (
+      await axios.get(`https://avwx.rest/api/metar/${request.query.icao}`, {
+        headers: {
+          Authorization: process.env.AVWX_API
+        }
+      })
+    ).data;
+    return sendReply(reply, 200, response);
   });
 
   app.get<{ Querystring: WeatherQuery }>('/taf', async (request, reply) => {
-    const icao = request.query.icao;
-    const taf = await Taf.get(icao);
-
-    return reply.code(200).header('Content-Type', 'application/json').send(taf);
+    const response = (
+      await axios.get(`https://avwx.rest/api/taf/${request.query.icao}`, {
+        headers: {
+          Authorization: process.env.AVWX_API
+        }
+      })
+    ).data;
+    return sendReply(reply, 200, response);
   });
 };

@@ -1,9 +1,10 @@
 import Fastify from 'fastify';
-import { JsonSchemaToTsProvider } from '@fastify/type-provider-json-schema-to-ts';
 import { config } from 'dotenv';
+import { JsonSchemaToTsProvider } from '@fastify/type-provider-json-schema-to-ts';
 
 import { weather } from './routes/weather';
 import { badge } from './routes/badge';
+import { sendReply } from './util/sendReply';
 
 config();
 
@@ -12,7 +13,7 @@ const app = Fastify().withTypeProvider<JsonSchemaToTsProvider>();
 const port = parseInt(process.env.PORT) || 3333;
 
 app.get('/', (request, reply) => {
-  reply.code(200).header('Content-Type', 'application/json').send({
+  sendReply(reply, 200, {
     success: true,
     message: 'OwO, welcome to the Fox Den, what might we have here? :3'
   });

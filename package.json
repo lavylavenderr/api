@@ -4,7 +4,7 @@
   "author": "Alexander Hyman",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon src/index.ts",
+    "dev": "doppler run -- tsc-watch --onSuccess \"node ./dist/index.js\"",
     "build": "prisma generate && tsc",
     "start": "node dist/index.js",
     "studio": "prisma studio",
@@ -17,7 +17,8 @@
     "axios": "^1.5.0",
     "dotenv": "^16.3.1",
     "fastify": "^4.22.2",
-    "prisma": "^5.2.0"
+    "prisma": "^5.2.0",
+    "tsc-watch": "^6.0.4"
   },
   "devDependencies": {
     "@types/node": "^18.17.15",

@@ -2,8 +2,6 @@
   "compilerOptions": {
     "outDir": "dist",
     "incremental": true,
-    "target": "es5",
-    "module": "commonjs",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
@@ -12,7 +10,14 @@
     "noUnusedLocals": true,
     "noImplicitAny": false,
     "sourceMap": true,
-    "lib": ["ESNext"],
+    "lib": [
+      "es2019",
+      "es2020.bigint",
+      "es2020.string",
+      "es2020.symbol.wellknown"
+    ],
+    "module": "commonjs",
+    "target": "es2019",
     "strictNullChecks": false
   },
   "compileOnSave": true,
