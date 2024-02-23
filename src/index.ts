@@ -1,7 +1,6 @@
 import Fastify from 'fastify';
 import { JsonSchemaToTsProvider } from '@fastify/type-provider-json-schema-to-ts';
 import { config } from 'dotenv';
-import logRequest from './middleware/logging';
 
 import { weather } from './routes/weather';
 import { badge } from './routes/badge';
@@ -21,11 +20,6 @@ app.get('/', (request, reply) => {
 
 app.register(weather, { prefix: '/weather' });
 app.register(badge, { prefix: '/badge' });
-
-// Logging Function
-app.addHook('onRequest', async (request, reply) => {
-  await logRequest(request);
-});
 
 // Start Fastify
 (async () => {
