@@ -9,9 +9,9 @@ import {
   Injectable,
 } from '@nestjs/common';
 import { Response } from 'src/interfaces/response.interface';
-import { Cache, CACHE_MANAGER } from '@nestjs/cache-manager';
 import { env } from 'src/lib/env';
 import { SpotifyService } from './spotify.service';
+import { CacheService, injectKey } from 'src/cache/cache.service';
 
 interface ITokenObj {
   token: string;
@@ -22,7 +22,7 @@ interface ITokenObj {
 @Injectable()
 export class SpotifyController {
   constructor(
-    @Inject(CACHE_MANAGER) private cacheManager: Cache,
+    @Inject(injectKey) private cacheManager: CacheService,
     private spotifyService: SpotifyService,
   ) {}
 
@@ -125,7 +125,7 @@ export class SpotifyController {
 
     const data = await response.json();
     const filteredTracks = [];
-    
+
     for (const track of data.items) {
       filteredTracks.push({
         artists: track.artists,
@@ -222,7 +222,7 @@ export class SpotifyController {
         message: 'Successfully logged in.',
       };
     } catch (error) {
-      console.log(error)
+      console.log(error);
       return {
         statusCode: 500,
         message: error.message || 'Invalid Response from Token Server',

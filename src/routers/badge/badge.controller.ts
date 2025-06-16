@@ -1,5 +1,4 @@
-import { Controller, Get, Req } from '@nestjs/common';
-import { Response } from 'src/interfaces/response.interface';
+import { Controller, Get } from '@nestjs/common';
 import { env } from 'src/lib/env';
 
 @Controller('badge')

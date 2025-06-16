@@ -5,7 +5,6 @@ config();
 
 const envSchema = z.object({
   AUTHORIZATION_KEY: z.string(),
-  DISCORD_WEBHOOK: z.string(),
   SPOTIFY_CLIENT_ID: z.string(),
   SPOTIFY_USER_ID: z.string(),
   SPOTIFY_SECRET: z.string(),
