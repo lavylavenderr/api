@@ -23,7 +23,7 @@ services:
     labels:
       - traefik.enable=true
       - traefik.docker.network=traefik-net
-      - traefik.http.routers.personalapi.rule=Host(`api.lvndr.sh`)
+      - traefik.http.routers.personalapi.rule=Host(`api.lavylavender.com`)
       - traefik.http.routers.personalapi.entrypoints=https
       - traefik.http.routers.personalapi.tls.certresolver=letsencrypt
       - traefik.http.routers.personalapi.tls=true
