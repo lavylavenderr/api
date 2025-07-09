@@ -11,7 +11,10 @@ const envSchema = z.object({
   REDIS_URL: z.string(),
   CALLBACK_URL: z.string(),
   DISCORD_ID: z.string(),
-  PORT: z.string().or(z.number()).default(3000)
+  PORT: z.string().or(z.number()).default(3000),
+  APPLEMAPS_KEY: z.string(),
+  APPLEMAPS_KEYID: z.string(),
+  APPLE_TEAMID: z.string()
 });
 
 type env = z.infer<typeof envSchema>;

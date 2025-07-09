@@ -15,6 +15,9 @@ services:
       - SPOTIFY_CLIENT_ID=${SPOTIFY_CLIENT_ID}
       - SPOTIFY_SECRET=${SPOTIFY_SECRET}
       - SPOTIFY_USER_ID=${SPOTIFY_USER_ID}
+      - APPLEMAPS_KEY=${APPLEMAPS_KEY}
+      - APPLEMAPS_KEYID=${APPLEMAPS_KEYID}
+      - APPLE_TEAMID=${APPLE_TEAMID}
     networks:
       - intranet
       - traefik-net
