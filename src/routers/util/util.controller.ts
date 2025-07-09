@@ -61,7 +61,10 @@ export class UtilityController {
       // sign the url
       const completePath = `/api/v1/snapshot?${params.toString()}`;
       const es256 = jwa('ES256');
-      const signature = es256.sign(completePath, env.APPLEMAPS_KEY);
+      const signature = es256.sign(
+        completePath,
+        env.APPLEMAPS_KEY.replace(/\\n/g, '\n'),
+      );
 
       // fetch and return the map image
       const photo = await fetch(
