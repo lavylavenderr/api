@@ -15,19 +15,12 @@ services:
       - SPOTIFY_CLIENT_ID=${SPOTIFY_CLIENT_ID}
       - SPOTIFY_SECRET=${SPOTIFY_SECRET}
       - SPOTIFY_USER_ID=${SPOTIFY_USER_ID}
+    ports:
+      - "127.0.0.1:4000:4000"
     networks:
       - intranet
-      - traefik-net
     depends_on:
       - redis
-    labels:
-      - traefik.enable=true
-      - traefik.docker.network=traefik-net
-      - traefik.http.routers.personalapi.rule=Host(`api.lvndr.sh`)
-      - traefik.http.routers.personalapi.entrypoints=https
-      - traefik.http.routers.personalapi.tls.certresolver=letsencrypt
-      - traefik.http.routers.personalapi.tls=true
-      - traefik.http.services.personalapi.loadbalancer.server.port=4000
 
   redis:
     image: redis:6.2-alpine
@@ -50,5 +43,3 @@ volumes:
 networks:
   intranet:
     driver: bridge
-  traefik-net:
-    external: true
