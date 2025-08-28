@@ -1,7 +1,7 @@
 version: "3.9"
 
 services:
-  api:
+  api-prod:
     image: ghcr.io/lavylavenderr/personal-api:latest
     command: >
       sh -c "pnpm run start:prod"
@@ -18,8 +18,6 @@ services:
       - APPLE_TEAMID=${APPLE_TEAMID}
       - APPLEMAPS_KEYID=${APPLEMAPS_KEYID}
       - APPLEMAPS_KEY=${APPLEMAPS_KEY}
-    ports:
-      - "127.0.0.1:4000:4000"
     networks:
       - intranet
       - kennel
@@ -30,7 +28,6 @@ services:
     image: redis:6.2-alpine
     networks:
       - intranet
-      - kennel
     volumes:
       - redisdata:/data
     healthcheck:
