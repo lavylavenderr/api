@@ -22,6 +22,7 @@ services:
       - "127.0.0.1:4000:4000"
     networks:
       - intranet
+      - kennel
     depends_on:
       - redis
 
@@ -29,6 +30,7 @@ services:
     image: redis:6.2-alpine
     networks:
       - intranet
+      - kennel
     volumes:
       - redisdata:/data
     healthcheck:
@@ -46,3 +48,6 @@ volumes:
 networks:
   intranet:
     driver: bridge
+  kennel:
+    external: true
+    name: kennel
