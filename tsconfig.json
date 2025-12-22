@@ -1,6 +1,7 @@
 {
 	"compilerOptions": {
 		// Config
+		"baseUrl": ".",
 		"rootDir": ".",
 
 		// Environment setup & latest features
