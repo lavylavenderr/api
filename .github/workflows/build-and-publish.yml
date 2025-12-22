@@ -28,8 +28,8 @@ jobs:
       - name: Push Docker Image
         run: docker push ghcr.io/lavylavenderr/api:latest
 
-    #   - name: Trigger Portainer Redeploy
-    #     run: |
-    #       curl -v -X POST \
-    #       -H "Content-Type: application/json" \
-    #       ${{ secrets.PORTAINER_WEBHOOK }}
+      - name: Trigger Portainer Redeploy
+        run: |
+          curl -v -X POST \
+          -H "Content-Type: application/json" \
+          ${{ secrets.PORTAINER_WEBHOOK }}
