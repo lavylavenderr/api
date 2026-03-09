@@ -21,6 +21,7 @@ const app = new Elysia()
   .use((await import("./routes/badge")).default)
   .use((await import("./routes/discord")).default)
   .use((await import("./routes/stripe")).default)
+  .use((await import("./routes/utility")).default)
   .listen(3000)
 
 console.info(`🦊 Elysia is running at http://${app.server?.hostname}:${app.server?.port}`)

@@ -18,3 +18,16 @@ export const requireAuthentication = new Elysia()
         return
     })
     .as("scoped")
+
+export const requireSpecialUserAgent = new Elysia()
+    .onBeforeHandle(({ request, set }) => {
+        const userAgentHeader = request.headers.get("User-Agent");
+
+        if (!userAgentHeader || userAgentHeader !== Bun.env.MAGIC_USER_AGENT) {
+            set.status = 401;
+            return {
+                message: "Invalid Request: Unauthorized"
+            }
+        }
+    })
+    .as("scoped")
